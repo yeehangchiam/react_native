@@ -61,12 +61,25 @@ const JobDetails = () => {
                         <Text>No data</Text>
                     ) : (
                         <View style={{padding: SIZES.medium, paddingBottom: 100}}>
-                            <Company
+
+                            data?.map((job) => (
+                            <NearbyJobCard
+                            job={job}
+                            key={`nearby-job-${job?.job_id}`}
+                            handleNavigate={()=> router.push(`/job-details/${job.job_id}`)}
+                            />
+                            ))
+
+                            data?.map((params) = > (
+                                <Company
                                 companyLogo = {data[0].employer_logo}
                                 jobTitle = {data[0].job_title}
                                 companyName = {data[0].employer_name}
                                 location = {data[0].job_country}
                             />
+
+                            ))
+                            
 
                             <JobTabs
                                 tabs = {tabs}
