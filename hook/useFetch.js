@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import customData from '../customData.json';
 
 const useFetch = (endpoint, query) => {
 
@@ -22,10 +23,9 @@ const useFetch = (endpoint, query) => {
         setIsLoading(true);
 
         try {
-            const response = await axios.request
-                (options);
+            const response = customData
 
-            setData(response.data.data);
+            setData(response.data);
             setIsLoading(false);
         } catch (error) {
             setError(error);
